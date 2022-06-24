@@ -3,13 +3,13 @@ const notes = require('./notes'),
 
 const addNoteHandler = (request, h) => {
 
-    const { username, password } = request.payload;
+    const { title, body, tags } = request.payload;
     const id = nanoid(16)
     const createdAt = new Date().toISOString()
     const updatedAt = createdAt
 
     const newNote = {
-        username, password, id, createdAt, updatedAt
+        title,body, tags, id, createdAt, updatedAt
     }
 
     notes.push(newNote)
@@ -31,7 +31,7 @@ const addNoteHandler = (request, h) => {
 
     const response = h.response({
         status: 'fail',
-        message: 'Catatan gagal ditambahkan'
+        message: 'gagal ditambahkan'
     })
 
     response.code(500)
